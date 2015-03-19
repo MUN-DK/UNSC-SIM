@@ -1,0 +1,39 @@
+{{>header}}
+
+<script>
+	$(document).ready(function() {
+		$('.button').click(function(e) {
+			e.preventDefault();
+			var append = '?aID=' + $(this).attr('id') +'&action='  + $(this).attr('value');
+			$('form').attr('action', append);
+			$('form').submit();
+		});
+	});
+</script>
+
+<form method="POST" action="/resolution/viewamendments"> 
+<h3>Simulation Agenda</h3>
+
+	{{^submitted}}
+		<div class="alert alert-danger">
+			No amendment requests have been submitted.
+		</div>
+	{{/submitted}}
+
+	{{#submitted}}
+		<div>
+			<div><h4>Amendment Request proposed by: {{user_country}} <img src="../img/flag-icons/{{user_country}}.png"> on {{submit_date}}<h4></div>
+			<div>
+				Status: {{fate}} </br>
+				{{user_req}} {{clause_num}} {{res_name}}
+				<ul>
+					<li>Clause: {{clause_des}}</li>
+				</ul>
+				<input type="submit" class="button" id="{{amendID}}" name="button" value="Add"></input>
+				<input type="submit" class="button" id="{{amendID}}" name="button" value="Delete"></input>
+			</div>
+		</div>						
+	{{/submitted}} 
+		<input type="submit" class="button button-cancel" id="{{amendID}}" name="button" value="Back"></input> 
+</form>
+{{>footer}}

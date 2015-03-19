@@ -1,0 +1,149 @@
+{{>header}}
+
+{{#user.mod}}
+	<div class="panel panel-info">
+		<div class="panel-heading"><b>Start Moderating CouncilSim</b></div>
+		<div class="panel-body">
+			<ul>
+				<li>To edit and view specific rooms, change your current simulation room (using the drop down up top).</li>
+				<li>Specific tasks for each room can be found to your left.</li>
+			</ul>
+		</div>
+	</div>
+{{/user.mod}}
+
+{{^user.mod}}
+
+	<script src="../js/jquery.slimscroll.min.js"></script>
+
+	<h2>Switch Dashboard View:</h2>
+	<ul class="view-nav">
+		<li class="active">Country Overview</li>
+		<li><a href="/simulation/activity">Simulation Activity</a></li>
+		<li><a href="/newsfeed/view">Newsfeed</a></li>
+	</ul>
+	{{#isChair}}
+		<div class="panel panel-info">
+		<div class="panel-heading"><b>CouncilSim Chair</b></div>
+		<div class="panel-body">
+			<ul>
+				<li>To join the resolution debate, click the Main Room bottom above.</li>
+				<li>Specific tasks for each resolution can be found in the debate room.</li>
+			</ul>
+		</div>
+	</div>
+	{{/isChair}}
+	
+	{{^isChair}}
+		{{^countryName}}
+				<div class="alert alert-danger">
+					Sorry you have not yet been assigned to a country.
+				</div>
+		{{/countryName}}
+	
+		{{#countryName}}
+		<div class="row">
+			<div class="col-md-4">
+				<img src="../img/flag-lg/{{countryName}}.jpg" class="img-responsive" />
+			</div>
+			<div class="col-md-8">
+				{{#chair}}
+						{{#isChair}}
+							<p><img src="../img/site-icons/Chair.png"/> {{user.username}} </p>
+						{{/isChair}}
+						{{^isChair}}
+							<p><img src="../img/site-icons/Chair.png"/> {{chair}}</p>
+						{{/isChair}}		
+					{{/chair}}
+				
+				<h3>{{countryName}} Members</h3>
+				<ul>
+					{{#countryUserList}}
+					<li>{{username}}</li>
+					{{/countryUserList}}	
+				</ul>
+
+		    <div class="row">
+		        <div class="col-md-6">
+		            <a href="./selectAmbassador" class="button button-edit">Elect Ambassador</a>
+	            </div>
+	        </div>
+
+			</div>
+		</div>
+	
+		<br />
+	
+		<h3>Country Messages</h3>
+		<div class="msgs msgs-country" id="messages">
+			<div class="msgs-older">
+				<i class="fa fa-chevron-up"></i> <a href="">View Older Messages</a>
+			</div>
+		    {{#messages}}
+				<div class="msgs-group clearfix">
+				<div class="msgs-user">
+					{{firstname}} {{lastname}} {{#country}}<img src="../img/flag-icons/{{country}}.png" />{{/country}}<br />
+					<span class="date">{{date}}</span>
+				</div>
+				<div class="msgs-message">
+					{{message}}
+				</div>
+			</div>
+			{{/messages}}
+		</div>
+	
+		<div class="row">
+		    <form method="post">
+				<div class="col-md-10">
+					<div class="form-small">
+						<input type="text" name="newMessage" id="newMessage" placeholder="New message..." class="message" required="required" />
+					</div>
+				</div>
+				<div class="col-md-2 text-right">
+					<input type="submit" class="button" value="Send" />
+				</div>
+			</form>
+		</div>
+		<br />
+	    {{#showDirec}}
+		<div class="alert alert-info">
+			<strong>Directives:</strong> {{directive}}
+		</div>
+		{{/showDirec}}
+		
+		<script>
+		$(document).ready(function(){
+			//initialize tinyscroll
+			$('#messages').slimScroll({
+	    		height: '300px',
+	    		start: 'bottom'
+	      	});
+	
+			//hide view older if no older messages
+	      	if($('#messages').scrollTop() == 0) {
+	      		$('.msgs-older').hide();
+	      	}
+	
+			$('.msgs-older a').click(function(e){
+				e.preventDefault();
+				$('#messages').slimScroll({ scrollTo: '0px' });
+			});
+	
+	      	//hide view older if at top of messages
+	      	$('#messages').scroll(function(){
+	      		if($(this).scrollTop() == 0 && $('.msgs-older').is(':visible')) {
+	      			$('.msgs-older').fadeOut();
+	      		}
+	
+	      		if($(this).scrollTop() > 0 && !$('.msgs-older').is(':visible')) {
+	      			$('.msgs-older').fadeIn();
+	      		}
+	      	});
+		});
+		</script>
+		{{/countryName}}
+	{{/isChair}}
+{{/user.mod}}
+
+
+{{>footer}}

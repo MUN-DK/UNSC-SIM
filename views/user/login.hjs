@@ -1,0 +1,36 @@
+{{>logheader}}
+
+<!--START HERO UNIT -->		
+<div class="hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<p>
+					Maintaining international <strong>peace</strong>.<br />
+					In the classroom, at home.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END HERO UNIT -->
+
+<!-- START CONTENT -->
+<div class="content" id="more">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>About CouncilSim</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium tellus vel lacus auctor, at porttitor leo tempor. Ut id consectetur felis. Nunc tristique posuere justo vitae cursus. Duis purus metus, posuere in augue vitae, ultrices tempus urna. Integer rutrum erat quis diam consequat, ac mollis turpis vehicula. Maecenas dictum massa urna, non vulputate orci mollis sed. Integer porta libero non elit ultricies, vel porta elit scelerisque. Praesent condimentum mauris eget nulla porttitor molestie. Fusce tortor justo, aliquam eu risus vitae, dictum imperdiet leo.
+				</p>
+				<p>
+					Sed non iaculis est. Donec sed rutrum nisl. Fusce consequat magna ante, viverra scelerisque sapien posuere ut. Proin accumsan mauris nunc, nec porttitor ipsum porta ac. Duis consequat elit sit amet neque suscipit, sed placerat metus accumsan. Etiam et suscipit urna, sed fermentum velit. Quisque vestibulum dolor orci, non aliquam justo vehicula id. Morbi bibendum libero quis viverra dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id feugiat mauris. Donec erat lectus, tempor quis tincidunt vitae, venenatis ut velit. Sed at bibendum turpis.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!--END CONTENT -->
+
+{{>logfooter}}

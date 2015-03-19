@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	function addURL(simID) 
+	{
+	    $('form').attr('action', function() {
+	        return this.action + "?simID=" + simID;
+	    });
+	}
+</script>
+
+{{>header}}
+	
+	<h3>Simulations Available to Join</h3>
+		<form method="post" action="/simulation/join">
+			<ul>
+			{{#availableSimulations}}
+				<li>{{simName}} <input type="submit" onClick=addURL({{simID}}) value="Join"></li>		
+			{{/availableSimulations}}
+			</ul>
+		</form>
+{{>footer}}

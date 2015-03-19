@@ -1,0 +1,24 @@
+{{>header}}
+<h3>My Profile</h3>
+{{#success}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> Your profile has been updated.
+</div>
+{{/success}}
+
+<div class="row">
+	<div class="col-md-3">
+		<img src="{{image}}" alt="no picture" class="img-responsive profile-big" />
+	</div>
+	<div class="col-md-9">
+		<p>
+			<strong>User Name:</strong> {{userinfo}} </br>
+			<strong>Name:</strong> {{fName}} {{lName}} </br>
+			<strong>Email:</strong> {{email}} </br>
+
+			<a href="/user/edit" class="button button-edit">Edit Profile</a>
+		</p>
+	</div>
+</div>
+{{>footer}}
+					

@@ -1,0 +1,220 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'express' ]
+2 info using npm@1.3.24
+3 info using node@v0.10.25
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'express@3.4.7', null ]
+7 verbose cache add name=undefined spec="express@3.4.7" args=["express@3.4.7",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'express@3.4.7',
+8 verbose parsed url   path: 'express@3.4.7',
+8 verbose parsed url   href: 'express@3.4.7' }
+9 verbose cache add name="express" spec="3.4.7" args=["express","3.4.7"]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: '3.4.7',
+10 verbose parsed url   path: '3.4.7',
+10 verbose parsed url   href: '3.4.7' }
+11 verbose addNamed [ 'express', '3.4.7' ]
+12 verbose addNamed [ '3.4.7', '3.4.7' ]
+13 silly lockFile fb24baa2-express-3-4-7 express@3.4.7
+14 verbose lock express@3.4.7 /home/dk/.npm/fb24baa2-express-3-4-7.lock
+15 verbose url raw express/3.4.7
+16 verbose url resolving [ 'http://registry.npmjs.org/', './express/3.4.7' ]
+17 verbose url resolved http://registry.npmjs.org/express/3.4.7
+18 info trying registry request attempt 1 at 10:30:02
+19 http GET http://registry.npmjs.org/express/3.4.7
+20 http 200 http://registry.npmjs.org/express/3.4.7
+21 silly registry.get cb [ 200,
+21 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+21 silly registry.get     etag: '"E6EZJYCZMM0UCJ994LK14T8GE"',
+21 silly registry.get     'content-type': 'application/json',
+21 silly registry.get     'cache-control': 'max-age=1',
+21 silly registry.get     'content-length': '1621',
+21 silly registry.get     'accept-ranges': 'bytes',
+21 silly registry.get     date: 'Mon, 24 Feb 2014 14:00:05 GMT',
+21 silly registry.get     via: '1.1 varnish',
+21 silly registry.get     age: '14',
+21 silly registry.get     connection: 'keep-alive',
+21 silly registry.get     'x-served-by': 'cache-v44-ASH',
+21 silly registry.get     'x-cache': 'HIT',
+21 silly registry.get     'x-cache-hits': '1',
+21 silly registry.get     'x-timer': 'S1393250405.150110483,VS0,VE24',
+21 silly registry.get     vary: 'Accept' } ]
+22 silly lockFile 828a4571-js-org-express-express-3-4-7-tgz http://registry.npmjs.org/express/-/express-3.4.7.tgz
+23 verbose lock http://registry.npmjs.org/express/-/express-3.4.7.tgz /home/dk/.npm/828a4571-js-org-express-express-3-4-7-tgz.lock
+24 verbose addRemoteTarball [ 'http://registry.npmjs.org/express/-/express-3.4.7.tgz',
+24 verbose addRemoteTarball   '3b939c47d2aa44dfecf77d50da2123c5bd313366' ]
+25 info retry fetch attempt 1 at 10:30:05
+26 verbose fetch to= /home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz
+27 http GET http://registry.npmjs.org/express/-/express-3.4.7.tgz
+28 http 200 http://registry.npmjs.org/express/-/express-3.4.7.tgz
+29 verbose tar unpack /home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz
+30 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+31 verbose lock tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package /home/dk/.npm/1bb42b06-05253-0-3940261313691735-package.lock
+32 silly lockFile f255174d-05253-0-3940261313691735-tmp-tgz tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz
+33 verbose lock tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz /home/dk/.npm/f255174d-05253-0-3940261313691735-tmp-tgz.lock
+34 silly gunzTarPerm modes [ '755', '644' ]
+35 silly gunzTarPerm extractEntry package.json
+36 silly gunzTarPerm extractEntry .npmignore
+37 silly gunzTarPerm extractEntry LICENSE
+38 silly gunzTarPerm extractEntry index.js
+39 silly gunzTarPerm extractEntry .travis.yml
+40 silly gunzTarPerm extractEntry bin/express
+41 silly gunzTarPerm extractEntry History.md
+42 silly gunzTarPerm extractEntry lib/application.js
+43 silly gunzTarPerm extractEntry lib/express.js
+44 silly gunzTarPerm extractEntry lib/middleware.js
+45 silly gunzTarPerm extractEntry lib/request.js
+46 silly gunzTarPerm extractEntry lib/response.js
+47 silly gunzTarPerm extractEntry lib/utils.js
+48 silly gunzTarPerm extractEntry lib/view.js
+49 silly gunzTarPerm extractEntry lib/router/index.js
+50 silly gunzTarPerm extractEntry lib/router/route.js
+51 silly gunzTarPerm extractEntry Makefile
+52 silly gunzTarPerm extractEntry Readme.md
+53 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+54 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+55 silly lockFile f255174d-05253-0-3940261313691735-tmp-tgz tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz
+56 silly lockFile f255174d-05253-0-3940261313691735-tmp-tgz tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/tmp.tgz
+57 verbose tar pack [ '/home/dk/.npm/express/3.4.7/package.tgz',
+57 verbose tar pack   '/home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package' ]
+58 verbose tarball /home/dk/.npm/express/3.4.7/package.tgz
+59 verbose folder /home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+60 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+61 verbose lock tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package /home/dk/.npm/1bb42b06-05253-0-3940261313691735-package.lock
+62 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+63 verbose lock tar:///home/dk/.npm/express/3.4.7/package.tgz /home/dk/.npm/fd60c51b-dk-npm-express-3-4-7-package-tgz.lock
+64 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+65 silly lockFile 1bb42b06-05253-0-3940261313691735-package tar:///home/dk/tmp/npm-2732-aOYcI8Jo/1393250405253-0.3940261313691735/package
+66 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+67 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+68 silly lockFile be88510f-ome-dk-npm-express-3-4-7-package /home/dk/.npm/express/3.4.7/package
+69 verbose lock /home/dk/.npm/express/3.4.7/package /home/dk/.npm/be88510f-ome-dk-npm-express-3-4-7-package.lock
+70 silly lockFile be88510f-ome-dk-npm-express-3-4-7-package /home/dk/.npm/express/3.4.7/package
+71 silly lockFile be88510f-ome-dk-npm-express-3-4-7-package /home/dk/.npm/express/3.4.7/package
+72 verbose tar unpack /home/dk/.npm/express/3.4.7/package.tgz
+73 silly lockFile 30e615c1-ome-dk-npm-express-3-4-7-package tar:///home/dk/.npm/express/3.4.7/package
+74 verbose lock tar:///home/dk/.npm/express/3.4.7/package /home/dk/.npm/30e615c1-ome-dk-npm-express-3-4-7-package.lock
+75 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+76 verbose lock tar:///home/dk/.npm/express/3.4.7/package.tgz /home/dk/.npm/fd60c51b-dk-npm-express-3-4-7-package-tgz.lock
+77 silly gunzTarPerm modes [ '755', '644' ]
+78 silly gunzTarPerm extractEntry package.json
+79 silly gunzTarPerm extractEntry .npmignore
+80 silly gunzTarPerm extractEntry LICENSE
+81 silly gunzTarPerm extractEntry index.js
+82 silly gunzTarPerm extractEntry .travis.yml
+83 silly gunzTarPerm extractEntry History.md
+84 silly gunzTarPerm extractEntry Makefile
+85 silly gunzTarPerm extractEntry Readme.md
+86 silly gunzTarPerm extractEntry bin/express
+87 silly gunzTarPerm extractEntry lib/application.js
+88 silly gunzTarPerm extractEntry lib/express.js
+89 silly gunzTarPerm extractEntry lib/middleware.js
+90 silly gunzTarPerm extractEntry lib/request.js
+91 silly gunzTarPerm extractEntry lib/response.js
+92 silly gunzTarPerm extractEntry lib/utils.js
+93 silly gunzTarPerm extractEntry lib/view.js
+94 silly gunzTarPerm extractEntry lib/router/index.js
+95 silly gunzTarPerm extractEntry lib/router/route.js
+96 silly lockFile 30e615c1-ome-dk-npm-express-3-4-7-package tar:///home/dk/.npm/express/3.4.7/package
+97 silly lockFile 30e615c1-ome-dk-npm-express-3-4-7-package tar:///home/dk/.npm/express/3.4.7/package
+98 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+99 silly lockFile fd60c51b-dk-npm-express-3-4-7-package-tgz tar:///home/dk/.npm/express/3.4.7/package.tgz
+100 verbose chmod /home/dk/.npm/express/3.4.7/package.tgz 644
+101 verbose chown /home/dk/.npm/express/3.4.7/package.tgz [ 1000, 1000 ]
+102 silly lockFile 828a4571-js-org-express-express-3-4-7-tgz http://registry.npmjs.org/express/-/express-3.4.7.tgz
+103 silly lockFile 828a4571-js-org-express-express-3-4-7-tgz http://registry.npmjs.org/express/-/express-3.4.7.tgz
+104 silly lockFile fb24baa2-express-3-4-7 express@3.4.7
+105 silly lockFile fb24baa2-express-3-4-7 express@3.4.7
+106 silly resolved [ { name: 'express',
+106 silly resolved     description: 'Sinatra inspired web development framework',
+106 silly resolved     version: '3.4.7',
+106 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+106 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+106 silly resolved     dependencies:
+106 silly resolved      { connect: '2.12.0',
+106 silly resolved        commander: '1.3.2',
+106 silly resolved        'range-parser': '0.0.4',
+106 silly resolved        mkdirp: '0.3.5',
+106 silly resolved        cookie: '0.1.0',
+106 silly resolved        'buffer-crc32': '0.2.1',
+106 silly resolved        fresh: '0.2.0',
+106 silly resolved        methods: '0.1.0',
+106 silly resolved        send: '0.1.4',
+106 silly resolved        'cookie-signature': '1.0.1',
+106 silly resolved        'merge-descriptors': '0.0.1',
+106 silly resolved        debug: '>= 0.7.3 < 1' },
+106 silly resolved     devDependencies:
+106 silly resolved      { ejs: '~0.8.4',
+106 silly resolved        mocha: '~1.15.1',
+106 silly resolved        jade: '~0.30.0',
+106 silly resolved        hjs: '~0.0.6',
+106 silly resolved        stylus: '~0.40.0',
+106 silly resolved        should: '~2.1.1',
+106 silly resolved        'connect-redis': '~1.4.5',
+106 silly resolved        marked: '0.2.10',
+106 silly resolved        supertest: '~0.8.1' },
+106 silly resolved     keywords:
+106 silly resolved      [ 'express',
+106 silly resolved        'framework',
+106 silly resolved        'sinatra',
+106 silly resolved        'web',
+106 silly resolved        'rest',
+106 silly resolved        'restful',
+106 silly resolved        'router',
+106 silly resolved        'app',
+106 silly resolved        'api' ],
+106 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/express' },
+106 silly resolved     main: 'index',
+106 silly resolved     bin: { express: './bin/express' },
+106 silly resolved     scripts: { prepublish: 'npm prune', test: 'make test' },
+106 silly resolved     engines: { node: '>= 0.8.0' },
+106 silly resolved     readme: '[![express logo](http://f.cl.ly/items/0V2S1n0K1i3y1c122g04/Screen%20Shot%202012-04-11%20at%209.59.42%20AM.png)](http://expressjs.com/)\n\n  Fast, unopinionated, minimalist web framework for [node](http://nodejs.org).\n\n  [![Build Status](https://secure.travis-ci.org/visionmedia/express.png)](http://travis-ci.org/visionmedia/express) [![Gittip](http://img.shields.io/gittip/visionmedia.png)](https://www.gittip.com/visionmedia/)\n\n```js\nvar express = require(\'express\');\nvar app = express();\n\napp.get(\'/\', function(req, res){\n  res.send(\'Hello World\');\n});\n\napp.listen(3000);\n```\n\n## Installation\n\n    $ npm install -g express\n\n## Quick Start\n\n The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:\n\n Create the app:\n\n    $ npm install -g express\n    $ express /tmp/foo && cd /tmp/foo\n\n Install dependencies:\n\n    $ npm install\n\n Start the server:\n\n    $ node app\n\n## Features\n\n  * Built on [Connect](http://github.com/senchalabs/connect)\n  * Robust routing\n  * HTTP helpers (redirection, caching, etc)\n  * View system supporting 14+ template engines\n  * Content negotiation\n  * Focus on high performance\n  * Environment based configuration\n  * Executable for generating applications quickly\n  * High test coverage\n\n## Philosophy\n\n  The Express philosophy is to provide small, robust tooling for HTTP servers, making\n  it a great solution for single page applications, web sites, hybrids, or public\n  HTTP APIs.\n\n  Built on Connect, you can use _only_ what you need, and nothing more. Applications\n  can be as big or as small as you like, even a single file. Express does\n  not force you to use any specific ORM or template engine. With support for over\n  14 template engines via [Consolidate.js](http://github.com/visionmedia/consolidate.js),\n  you can quickly craft your perfect framework.\n\n## More Information\n\n  * [Website and Documentation](http://expressjs.com/) stored at [visionmedia/expressjs.com](https://github.com/visionmedia/expressjs.com)\n  * Join #express on freenode\n  * [Google Group](http://groups.google.com/group/express-js) for discussion\n  * Follow [tjholowaychuk](http://twitter.com/tjholowaychuk) on twitter for updates\n  * Visit the [Wiki](http://github.com/visionmedia/express/wiki)\n  * [Русскоязычная документация](http://jsman.ru/express/)\n  * Run express examples [online](https://runnable.com/express)\n\n## Viewing Examples\n\nClone the Express repo, then install the dev dependencies to install all the example / test suite dependencies:\n\n    $ git clone git://github.com/visionmedia/express.git --depth 1\n    $ cd express\n    $ npm install\n\nThen run whichever tests you want:\n\n    $ node examples/content-negotiation\n\nYou can also view live examples here:\n\n<a href="https://runnable.com/express" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>\n\n## Running Tests\n\nTo run the test suite, first invoke the following command within the repo, installing the development dependencies:\n\n    $ npm install\n\nThen run the tests:\n\n    $ make test\n\n## Contributors\n\n  https://github.com/visionmedia/express/graphs/contributors\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2009-2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+106 silly resolved     readmeFilename: 'Readme.md',
+106 silly resolved     bugs: { url: 'https://github.com/visionmedia/express/issues' },
+106 silly resolved     homepage: 'https://github.com/visionmedia/express',
+106 silly resolved     _id: 'express@3.4.7',
+106 silly resolved     dist: { shasum: '0b008d1a4287024a57ddb4b32bca10c963d72352' },
+106 silly resolved     _from: 'express@3.4.7',
+106 silly resolved     _resolved: 'http://registry.npmjs.org/express/-/express-3.4.7.tgz' } ]
+107 info install express@3.4.7 into /home/dk/git/SC_Sim_2/Security_Council_2
+108 info installOne express@3.4.7
+109 info /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/express unbuild
+110 info preuninstall express@3.4.7
+111 info uninstall express@3.4.7
+112 verbose true,/home/dk/git/SC_Sim_2/Security_Council_2/node_modules,/home/dk/git/SC_Sim_2/Security_Council_2/node_modules unbuild express@3.4.7
+113 verbose /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/.bin,[object Object] binRoot
+114 info /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/express unbuild
+115 info preuninstall express@3.4.7
+116 info uninstall express@3.4.7
+117 verbose true,/home/dk/git/SC_Sim_2/Security_Council_2/node_modules,/home/dk/git/SC_Sim_2/Security_Council_2/node_modules unbuild express@3.4.7
+118 verbose /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/.bin,[object Object] binRoot
+119 info postuninstall express@3.4.7
+120 error Refusing to delete: /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/.bin/express not in /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/express
+File exists: /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/.bin/express
+Move it away, and try again.
+121 error System Linux 3.2.0-23-generic
+122 error command "/usr/bin/node" "/usr/bin/npm" "install" "express"
+123 error cwd /home/dk/git/SC_Sim_2/Security_Council_2
+124 error node -v v0.10.25
+125 error npm -v 1.3.24
+126 error path /home/dk/git/SC_Sim_2/Security_Council_2/node_modules/.bin/express
+127 error code EEXIST
+128 verbose exit [ 1, true ]

@@ -1,0 +1,42 @@
+{{>header}}
+<h3>Select/Change Ambassadors to Countries for {{currentSimName}}</h3>
+<form method="POST">
+	<div class="row">
+		<div class="col-md-4 first">
+			<div class="form-small">
+			{{#countries}}
+				<label for="{{country}}" class="{{group}}">{{country}} <img src="../img/flag-icons/{{country}}.png" /></label>
+				<select name="{{country}}" class="{{group}}">
+					{{#delegate}}
+					<option selected="true">{{username}}</option>
+					{{/delegate}}
+					{{^delegate}}
+					<option selected="true"></option>
+					{{/delegate}}
+					{{#users}}
+					<option>{{username}}</option>
+					{{/users}}
+				</select>
+			{{/countries}}
+			</div>
+		</div>
+		<div class="col-md-4 second">
+			<div class="form-small"></div>
+		</div>
+		<div class="col-md-4 third">
+			<div class="form-small"></div>
+		</div>
+	</div>
+
+	<div class="col-md-12 text-right">
+		<input class="button" type="submit" value="Save" />
+	</div>
+</form>
+
+<script>
+	$(document).ready(function() {
+		$('.first .form-small .1').appendTo('.second .form-small');
+		$('.first .form-small .2').appendTo('.third .form-small');
+	});
+</script>
+{{>footer}}

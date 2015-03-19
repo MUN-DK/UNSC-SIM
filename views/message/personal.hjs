@@ -1,0 +1,71 @@
+{{>header}}
+
+<script src="../js/jquery.slimscroll.min.js"></script>
+
+<h3>Personal Message to {{toUser}}</h3>
+<div class="msgs msgs-global" id="messages">
+	<div class="msgs-older">
+		<i class="fa fa-chevron-up"></i> <a href="">View Older Messages</a>
+	</div>
+    {{#messages}}
+	<div class="msgs-group clearfix">
+		<div class="Message">
+			<div class="msgs-user">
+				{{fromUser}}<br />
+				<span class="date">{{date}}</span>
+			</div>
+			<div class="msgs-message">
+				{{message}}
+			</div>
+		</div>
+	</div>
+	{{/messages}}
+
+</div>
+
+<div class="row">
+    <form method="post">
+	<div class="col-md-10">
+		<div class="form-small">
+			<input type="text" name="newMessage" id="newMessage" placeholder="New message..." class="message" required="required" />
+		</div>
+	</div>
+	<div class="col-md-2 text-right">
+		<input type="submit" class="button" value="Send" />
+	</div>
+	</form>
+</div>
+
+<script>
+	$(document).ready(function(){
+		//initialize tinyscroll
+		$('#messages').slimScroll({
+    		height: 'auto',
+    		start: 'bottom'
+      	});
+
+		//hide view older if no older messages
+      	if($('#messages').scrollTop() == 0) {
+      		$('.msgs-older').hide();
+      	}
+
+		$('.msgs-older a').click(function(e){
+			e.preventDefault();
+			$('#messages').slimScroll({ scrollTo: '0px' });
+		});
+
+      	//hide view older if at top of messages
+      	$('#messages').scroll(function(){
+      		if($(this).scrollTop() == 0 && $('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeOut();
+      		}
+
+      		if($(this).scrollTop() > 0 && !$('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeIn();
+      		}
+      	});
+	});
+</script>
+
+
+{{>footer}}

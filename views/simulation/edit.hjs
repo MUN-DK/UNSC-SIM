@@ -1,0 +1,204 @@
+{{>header}}
+
+<script>
+	$(document).ready(function(){
+		var unsortedUsers = document.getElementById('Manual_Country_Sort_UnSorted_Users');
+		var sortedUsers = document.getElementById('Manual_Country_Sort_Current_Users');
+		var currentCountry = document.getElementById('Manual_Country_Sort_Countries');
+		
+		var groupedData = [];
+		var changedUsers = [];
+		
+		var changedUsersOnly = [];
+		
+		{{#list}}
+			groupedData.push(['{{username}}','{{userCountry}}']);
+		{{/list}}
+		
+		var option;
+		for(var i = 0; i < groupedData.length; i++){	
+			if(groupedData[i][1] === ""){
+				option = document.createElement("option");
+				option.setAttribute("value",groupedData[i][0]);
+				option.innerHTML = groupedData[i][0];
+				unsortedUsers.appendChild(option);
+			}
+		}
+	
+		$('#country_sort').change(function(){
+			var selected = document.getElementById('country_sort').value;
+			
+			if(selected === "Manual Sort"){
+				document.getElementById('Manual_Sort_Div').style.display = 'inline';				
+			}
+			else {
+				document.getElementById('Manual_Sort_Div').style.display = 'none';
+			}
+		});
+		$('#Manual_Country_Sort_Countries').change(function(){
+			sortedUsers.options.length = 0;
+				
+			for(var i =0;i<groupedData.length;i++){
+				if(groupedData[i][1] === currentCountry.value){
+					var newOp = document.createElement("option");
+					newOp.setAttribute("value",groupedData[i][0]);
+					newOp.innerHTML = groupedData[i][0];
+					sortedUsers.appendChild(newOp);
+				}
+			}
+		});
+		
+		$('#add_country_user').click(function(){	
+			
+			if(currentCountry.value != ""){
+				var selectedUser = unsortedUsers.value;
+				var newOp = document.createElement("option");
+				newOp.setAttribute("value",selectedUser);
+				newOp.innerHTML = selectedUser;
+				sortedUsers.appendChild(newOp);
+
+				$("#Manual_Country_Sort_UnSorted_Users option:selected").remove();
+				for(var i=0;i<groupedData.length;i++){
+					if(selectedUser === groupedData[i][0]){
+						groupedData[i][1] = currentCountry.value;
+						break;
+					}
+				}
+				changedUsers.push([selectedUser, currentCountry.value]);
+				changedUsersOnly.push(selectedUser);
+			}
+			
+								
+
+		});
+		$('#remove_country_user').click(function(){
+				var selectedUser = sortedUsers.value;
+				var newOp = document.createElement("option");
+				newOp.setAttribute("value",selectedUser);
+				newOp.innerHTML = selectedUser;
+				unsortedUsers.appendChild(newOp);
+
+				$("#Manual_Country_Sort_Current_Users option:selected").remove();
+				for(var i=0;i<groupedData.length;i++){
+					if(selectedUser === groupedData[i][0]){
+						groupedData[i][1] = "";
+						break;
+					}
+				}
+				changedUsers.push([selectedUser, ""]);
+		});
+		
+		
+		$('#mainForm').submit(function(e){
+			var selected = document.getElementById('country_sort').value;
+			
+			if(selected === "Manual Sort"){
+				e.preventDefault();
+				var manSortData = document.getElementById('manual_sort_data');
+				manSortData.value = JSON.stringify(JSON.stringify(changedUsers));
+				this.submit();
+			}
+			
+		});
+		
+	});
+</script>
+
+<h3>Edit {{currentSimName}}</h2>
+
+{{#success}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> The changes to your room have been saved.
+</div>
+{{/success}}
+
+{{#delegateSuccess}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> The ambassadors for this room have been saved.
+</div>
+{{/delegateSuccess}}
+
+{{#error1}}
+<div class="alert alert-danger">
+	<strong>Uh oh!</strong> End date for simulation must be after start and registration deadline dates.
+</div>
+{{/error1}}
+
+{{#error2}}
+<div class="alert alert-danger">
+	<strong>Uh oh!</strong> Registration deadline must be before simulation start date and simulation end date.
+</div>
+{{/error2}}
+
+<form method="POST" id='mainForm'>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-small">
+				<label for="session_name">Simulation Room Name</label><br />
+				<input type="text" name="session_name" id="session_name" placeholder="Simulation Room Name" value="{{simName}}" required="required" /><br />
+
+				<label for="reg_date">Registration Deadline</label><br />
+				<input type="date" name="reg_date" id="reg_date" placeholder="Registration Date" value={{regDate}} required="required"/> <br />
+
+				<label for="country_sort">Sort Users into Countries By</label><br />
+				<select name="country_sort" id="country_sort" placeholder="Country Sort">
+					<option></option>
+					<option>Auto Sort On Registration Date</option>
+					<option>Instant Auto Sort</option>
+					<option>Manual Sort</option>
+				</select><br />
+				
+				<input type='hidden' id='manual_sort_data' name='manual_sort_data' value=''/>
+				
+				<div id='Manual_Sort_Div'  style = 'display:none'>
+					<p>Select a country</p>
+					<select id='Manual_Country_Sort_Countries'>
+					<option/>
+					{{#Countries}}
+					<option>{{countryName}}</option>
+					{{/Countries}}
+					</select>
+					<p>Current Country members</p>
+					<select id='Manual_Country_Sort_Current_Users'/>
+					<input type='button' class='button' id='remove_country_user' value='Remove'/>
+					<p>Unsorted users</p>
+					<select id='Manual_Country_Sort_UnSorted_Users'/>
+					<input type='button' class='button' id='add_country_user' value='Add'/>	
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-small">
+				<label for="start_date">Simulation Start Date</label><br/>
+				<input type="date" name="start_date" id="start_date" placeholder="Starting Date" value={{startDate}} required="required" /><br />
+
+				<label for="end_date">Simulation End Date</label><br />
+				<input type="date" name="end_date" id="end_date" placeholder="Ending Date" value={{endDate}} required="required"/> <br />
+
+				<label for="sim_chair">Simulation Room Chair</label><br />
+				<select name="sim_chair" id="sim_chair" placeholder="Chair">
+					<option selected>{{simChair}}</option>
+					{{#list}}
+					<option>{{username}}</option>
+					{{/list}}
+				</select><br />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<a href="./delegates?simID={{simID}}" class="button button-edit">Select/Edit Ambassadors</a> 
+		</div>
+		<div class="col-md-6 text-right">
+			<input type="submit" class="button" value="Save Changes" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+		    <a href="./directives?simID={{simID}}" class="button button-edit">Set Directives</a>
+	    </div>
+	</div>
+</form>
+{{>footer}}
+					

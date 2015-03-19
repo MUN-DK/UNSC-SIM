@@ -1,0 +1,39 @@
+{{>header}}
+<h3>User List</h3>
+
+{{^show}}
+<div class="row">
+	<div class="col-md-6">Moderator: {{#mIn}}{{modName}}{{/mIn}}{{^mIn}}<a href='/message/personal?{{modName}}'>{{modName}}</a>{{/mIn}} {{#modHasNewMessage}}<i class="fa fa-envelope"></i>{{/modHasNewMessage}}</div>
+	{{#chair}}
+	<div class="col-md-6">Chair: {{#cIn}}{{chair}}{{/cIn}}{{^cIn}}<a href='/message/personal?{{chair}}'>{{chair}}</a>{{/cIn}} {{#chairHasNewMessage}}<i class="fa fa-envelope"></i>{{/chairHasNewMessage}}</div>
+</div>
+{{/chair}}
+	<br />
+	<div class="alert alert-danger">
+		Sorry, No users to list until after countries are assigned.
+	</div>
+{{/show}}
+
+{{#show}}
+	<div class="row">
+		<div class="col-md-6"><strong>Moderator: </strong>{{#mIn}}{{modName}}{{/mIn}}{{^mIn}}<a href='/message/personal?{{modName}}'>{{modName}}</a>{{/mIn}} <img src="../img/site-icons/Mod.png" /> {{#modHasNewMessage}}<i class="fa fa-envelope"></i>{{/modHasNewMessage}}</div>
+		{{#chair}}
+		<div class="col-md-6"><strong>Chair:</strong>  {{#cIn}}{{chair}}{{/cIn}}{{^cIn}}<a href='/message/personal?{{chair}}'>{{chair}}</a>{{/cIn}} <img src="../img/site-icons/Chair.png"> {{#chairHasNewMessage}}<i class="fa fa-envelope"></i>{{/chairHasNewMessage}}</div>
+		{{/chair}}
+	</div>
+	{{#countries}}
+		<div class="member">
+			<h4>{{name}} <img src="../img/flag-icons/{{name}}.png"></h4>
+			<ul class="member-list">
+			{{#Members}}
+				{{#user}}
+					<li>{{#isCurrentUser}}{{username}}{{/isCurrentUser}}{{^isCurrentUser}}<a href='/message/personal?{{username}}'>{{username}}</a>{{/isCurrentUser}} {{#ambassador}}<img src="../img/site-icons/medal.png">{{/ambassador}} {{#hasNewMessage}}<i class="fa fa-envelope"></i>{{/hasNewMessage}}</li>
+				{{/user}}
+			{{/Members}}
+			</ul>
+		</div>
+		
+	{{/countries}}
+{{/show}}
+
+{{>footer}}

@@ -1,0 +1,51 @@
+{{>header}}
+<h3>Add New Resolution</h3>
+{{#success}}
+<div class="alert alert-success">
+    <strong>Sweet!</strong> Resolution has been successfully added. Add another resolution, or <a href="/resolution/main">go to main room</a>.
+</div>
+{{/success}}
+
+<form method="POST">
+    <div class="row">
+    	<div class="col-md-12"> 
+            <div class="form-small">
+
+                <label for="ResName">Resolution Name</label>
+                <input type="text" name="ResName" id="ResName" placeholder="Resolution Name" required="required" />
+
+                <label for="scenario">Scenario Description</label>
+                <textarea name="scenario" id="scenario" required="required"></textarea>
+                
+                <label for="clause">Clause 1</label>
+                <textarea name="clause" id="clause"></textarea>
+
+                <div id="newClause"></div>
+            </div>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="button button-add" href="" id="addClause">Add Another Clause</a>
+        </div>
+    	<div class="col-md-6 text-right">
+    		<input type="submit" value="Add Resolution" class="button" />
+    	</div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function(){
+        var clauseCount = 2;
+        $('#addClause').click(function(e){
+            e.preventDefault();
+            var clauseLabel = '<label for="clause">Clause ' + clauseCount + '</label>';
+            var clauseForm = '<textarea name="clause" id="clause"></textarea>';
+            $('#newClause').append(clauseLabel);
+            $('#newClause').append(clauseForm);
+            clauseCount ++;
+        });
+    })
+</script>
+
+{{>footer}}

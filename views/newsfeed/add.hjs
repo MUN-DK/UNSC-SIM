@@ -1,0 +1,71 @@
+{{>header}}
+<h3>Add/Edit Newsfeeds</h3>
+	{{#Complete}}
+		{{#addSuccess}}
+			<div class="alert alert-success">
+				Success! News Article has been added.
+			</div>
+		{{/addSuccess}}
+		
+		{{#editSuccess}}
+			<div class="alert alert-success">
+				Success! News Article has been modified.
+			</div>
+		{{/editSuccess}}
+		
+		<a href="view" class="button button-cancel">Back to Newsfeeds</a>
+	{{/Complete}}	
+	
+	{{^Complete}}
+		<form method="POST">
+	    	<div class="row">
+	    		<div class="col-md-12"> 
+	            	<div class="form-small">
+						<label for="newsTitle">Title</label>
+						<div> 
+							<input type="text" name="newsTitle" value="{{newsTitle}}">
+						</div>	
+						
+						<label for="type">Type</label>
+						<select id="type" name="Type">
+							{{#selected}}
+								<option value="URL" id="url"{{#urlSelect}} selected {{/urlSelect}}>URL</option>
+								<option value="Content" id="content" {{#contentSelect}} selected {{/contentSelect}}>Content</option>
+							{{/selected}}
+							{{^selected}}
+								<option value="URL" id="url">URL</option>
+								<option value="Content" id="content">Content</option>
+							{{/selected}}
+						</select>
+	
+		                <label for="descLabel">Description</label>
+		                <textarea name="description" id="description" class="large" required="required">{{text}}</textarea>
+		            </div>
+		    	</div>
+		    </div>
+		    
+		    <div class="row">
+	    		<div class type="columns" align="center">
+					<input type="submit" class="button" id="saveButton" name="button" value="Save"></input>
+					<a href="view" class="button button-cancel">Back to Newsfeeds</a>
+				</div>	
+			</div>
+		</form>
+	{{/Complete}}
+{{>footer}}
+
+<script>
+	$(document).ready(function(){
+		if($('#type #url').is(":selected")) {
+			$('#description').css('height', '35px');
+		}
+		
+		$('#type').change(function(){
+			if($('#type #url').is(":selected")) {
+				$('#description').css('height', '35px');
+			} else {
+				$('#description').css('height', '');
+			}
+		});
+	});
+</script>

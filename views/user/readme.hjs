@@ -1,0 +1,251 @@
+{{>logheader}}
+		<!-- START MAIN CONTENT -->
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>ReadMe</h1>
+<body>
+
+<h2>SET UP</h2>
+There is a default database setup which includes:<br>
+<h5>Simulations</h5>
+<ul Style="margin-left: 10px;">
+	<li>Test Simulation 1</li>
+	<li>Test Simulation 2</li>
+	<li>Test Simulation 3</li>
+</ul>
+*<i> all Users have joined Test Simulation 1, but have not been sorted into countires.*</i><br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>LOGIN FOR MOD</h2>
+1. Enter the username "mod" with the password "mod"<br>
+2. Press the "Sign in" button or press enter<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>LOGIN FOR USER</h2>
+1. Enter the username "usern", where "n" is a number between 1-17(ie. user1), and with the password "123"<br>
+2. Press the "Sign in" button or press enter<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO JOIN NEW ROOM</h2>
+<h4>AFTER LOG IN</h4>
+1. Click the "Join New Room" button<br>
+2. Pop-up box will appear with list of available rooms to join<br>
+3. Click on one of the options to join that room<br>
+4. Page will redirect to Room landing page<br>
+<br>
+<h4>WHILE IN ROOM</h4>
+1. Click the "Change simularion room..." dropdown menu<br>
+2. Select "Join New Room" option<br>
+3. Pop-up box will appear with list of available rooms to join<br>
+4. Click on one of the options to join that room<br>
+5. Page will redirect to Room landing page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO SELECT EXISTING ROOM</h2>
+<h4>AFTER LOG IN</h4>
+1. Click the "Select Existing Room" button<br>
+2. Pop-up box will appear with list of available rooms to join<br>
+3. Click on one of the options to rejoin that room<br>
+4. Page will redirect to Room landing page<br>
+<br>
+<h4>WHILE IN ROOM</h4>
+1. Click the "Change simularion room..." dropdown menu<br>
+2. Pop-up box will appear with list of current rooms to rejoin<br>
+3. Click on one of the options to rejoin that room<br>
+4. Page will redirect to the new Room landing page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO CREATE NEW ROOM</h2>
+<h4>MUST BE LOGGED IN AS A MODERATOR</h4>
+1. Click the "Create New Room" button<br>
+2. Page will redirect to "Create a New Simulation Room" page<br>
+3. Enter the desired Simulation name, registration deadline, start date and end date<br>
+4. Click "Create" button<br>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>Registration deadline must be before or the same date as the start date</li>
+	<li> The end date must be after the start date</li>
+</ul>
+5. On successful creation, Page will redirect to Room landing page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO MODIFY ACCOUNT INFO</h2>
+<h4>AFTER LOG IN</h4>
+1. Click the "My Profile" link, located on the right of the header<br>
+2. Page will redirect to user profile page<br>
+3. Click the "Edit Profile" button<br>
+4. Page will redirect to edit user page<br>
+5. Enter desired name and email<br>
+<br>
+<h4>TO CHANGE PASSWORD</h4>
+	6. Enter the new desired password in the "New Password" and "Confirm Password" bar<br>
+  	   They must match, or the password will not save<br>
+
+7. Click "Save Changes"<br>
+8. Page will redirect to user profile page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO VIEW USER LIST</h2>
+1. Click the "User List" option on the left in the "Simulation Menu"<br>
+2. Page will redirect to user list page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO SEE/SEND GLOBAl MESSAGES</h2>
+1. Click the "Global Messages" option on the left in the "Simulation Menu"<br>
+2. Page will redirect to global message page<br>
+3. To send message, enter text in the bottom text bar, and click the "Send Message" button<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO VIEW RESOLUTIONS</h2>
+1. Click the "Main Room" button located at the top right, or the Main Room Link in the left bar<br>
+2. Page will redirect to resolution page<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>
+TO ADD RESOLUTIONS</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li> To add resolution, the user must be a moderator</li>
+</ul>
+1. Click the "User List" option on the left in the "Administration Menu"<br>
+2. Page will redirect to add resolution page<br>
+3. Enter the desired name, resolution and clauses<br>
+<br>
+<h4>TO ADD EXTRA CLAUSES</h4>
+4. Click the "Add Clause" button, and a new clause box will appear<br>
+5. Click the "Add Resolution" button<br>
+6. Page will refresh with success method<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>ACTIVATE A RESOLUTION FOR DEBATE</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>To activate/deactivate a resolution, the user must be a moderator or chair</li>
+</ul>
+1. Navigate to the SIMULATION<br>
+2. Click the "Main Room" button on the top left<br>
+3. Click on the "Toggle" button next to the resolution name to activate or dectivate<br>
+<ul Style="margin-left: 10px;">
+	<li>If you activate a resolution when another is active, the current active one deactivates and
+	  the one you selected becomes active</li>
+</ul>
+<a href="/user/login">Back</a><br>
+<br>  
+<h2>ENTER A RESOLUTION DEBATE ROOM</h2>
+1. Navigate to the SIMULATION<br>
+2. Click the "Main Room" button on the top left<br>
+3. Click on the active resolution name<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>SUBMITING AN AMENDMENT</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>The user must be an ambassador(delegate)</li>
+</ul>
+1. Go to the RESOLUTION DEBATE ROOM(see ENTER A RESOLUTION DEBATE ROOM)<br>
+2. Click the "Submit Amendment" button under the resolution description<br>
+3. Select the clause number you wish to propose change to<br>
+<ul Style="margin-left: 10px;">
+	<li>For creating new clauses, select the "New Clause" option instead of a clause number</li>
+</ul>
+4. Make the changes to the clause if any<br>
+5. Select what you would like done to selected clause(Edit, Remove, Add)<br>
+<ul Style="margin-left: 10px;">
+	<li>Can only Add for "New Clause"</li>
+	<li>Can only Edit and Remove for existing clauses</li>
+</ul>
+6. Returns you to the RESOLUTION DEBATE ROOM<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>PLACING AN AMENDMENT BE VOTED</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>The user must be the Chair or Moderator</li>
+</ul>
+1. Go to the RESOLUTION DEBATE ROOM( see ENTER A RESOLUTION DEBATE ROOM)<br>
+2. Click the "Amendment Request" button under the resolution description<br>
+  This takes you to a list of submited amendments by all the countries for which each submitment you can:<br>
+  	3. Delete: by clicking the "Delete" button, it deletes the amendment submission<br>
+  	4. Add: By clicking the "Add" button, it sends the amendment to the Resolution Debate Room and starts the vote to open debate on the current amendment<br>
+<a href="/user/login">Back</a><br>
+<br>		
+<h2>TO VIEW ALL POSITION PAPERS</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>The "View All Position Papers by Country" button will only appear if the user is a chair or mod, or if the position paper deadline date has passed</li>
+</ul>
+1. Click "View All Position Papers by Country" button<br>
+2. Page will redirect to all position papers page<br>
+3. Click on the desired country's name<br>
+4. Pop-up box will appear with desired country's position paper<br>
+5. Click the "x" or hit esc to close the pop-up box<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO VIEW/EDIT USER COUNTRY POSITION PAPER</h2>
+<h4>WARNING</h4>
+<ul Style="margin-left: 10px;">
+	<li>The "Add/Edit Your Country's Position Paper" button will only appear if the user apart of a country</li>
+</ul>
+1. Click the "Add/Edit Your Country's Position Paper" button<br>
+2. Page will redirect add/edit position paper page<br>
+<br>
+<h4>IF COUNTRY AMBASSADOR</h4>
+	3. Enter the new country position into the text box<br>
+	4. Press "Save Changes" button <br>
+<br>
+<h4>IF COUNTRY MEMBER</h4>
+	3. Country position will appear in text box, in a read-only state<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO EDIT SIMULATION</h2>
+<h4>MUST BE LOGGED IN AS A MODERATOR</h4>
+<br>	
+1. Click the "Edit Room" button under the ADMINISTRATION MENU on the left.<br>
+2. Enter the data which you wish to change.<br>
+<br>
+<h4>INSTANT COUNTRY SORT </h4>
+	3.Selecting instant auto sort will sort all users who joined the simulation immediately upon saving the changes<br>
+<br>
+<h4>REGISTRATION COUNTRY SORT</h4>
+	4. Selecting auto sort on registration date will sort all users who joined the simulation when the current date becomes registration date<br>
+<br>
+<h4>MANUAL COUNTRY SORT </h4>
+	5. Selecting manual sort make visible extra options to manually sort users.<br>
+		I. Select a country in the first dropdown box,<br>
+		II. Next dropdown box shows all the users currently in that country and selecting one will allow you to remove the user from the country.<br>
+		III. The final dropdown box shows all the users not in a country and by selecting one will allow you to add them to the current country.<br>
+
+6. Click the "Save Changes" button<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO EDIT COUNTRY DELEGATES</h2>
+1. Navigate to the EDIT SIMULATION page (TO EDIT SIMULATION)<br>
+2. Click the "Select/Edit Ambassadors" button.<br>
+2. Select the users under each country dropdown you wish to be the countries ambassadors<br>
+3. Click the "Save" button<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>TO ADD/EDIT A COUNTRY'S DIRECTIVE</h2>
+1. Navigate to the EDIT SIMULATION page (TO EDIT SIMULATION)<br>
+2. Click the "Set Directives" button<br>
+3. Select country from dropdown box<br>
+4. Enter country's directive<br>
+5. Click the "Save" button<br>
+<a href="/user/login">Back</a><br>
+<br>
+<h2>GENERAL VOTING</h2>
+1. Navigate to the EDIT SIMULATION page (TO EDIT SIMULATION)<br>
+2. Click the "Set Directives" button<br>
+3. Select country from dropdown box<br>
+4. Enter country's directive<br>
+5. Click the "Save" button<br>
+<br>
+<a href="/user/login">Back</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+{{<logfooter}}

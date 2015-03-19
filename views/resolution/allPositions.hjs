@@ -1,0 +1,51 @@
+{{>header}}
+<h3>View All Position Papers by Country</h3>
+
+{{^positions}}
+	<div class="alert alert-danger">
+		<strong>Heads up! </strong>No position papers have been submitted yet.
+	</div>
+{{/positions}}
+
+
+{{#positions}}
+	<div class="alert alert-info">
+		<strong>Heads up! </strong>To view a position paper, click a country's name.
+	</div>
+{{#countries}}
+	<ul>
+	{{#position}}
+			<li><a href="#papers" data-toggle="modal" id="{{name}}" class="paper-link">{{name}}</a> <img src="../img/flag-icons/{{name}}.png"></li>
+			<div class="position-paper" id="{{name}}">
+				{{position}}
+			</div>
+	{{/position}}
+	</ul>
+{{/countries}}
+
+<div class="modal fade" id="papers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Position Paper for <span id="countryname"></span></h4>
+      </div>
+      <div class="modal-body">
+      	<div id="paperContent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$('.paper-link').click(function(e){
+			var country = $(this).attr('id');
+			$('#countryname').html(country);
+			$('#paperContent').html($('div#' + country).html());
+		});
+	});
+</script>
+{{/positions}}
+
+{{>footer}}

@@ -1,0 +1,44 @@
+{{>header}}
+<h3>Add/Edit {{Country}}'s Position Paper</h3>
+{{#success}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> Your country's position paper has been updated.
+</div>
+{{/success}}
+
+{{^papersOpen}}
+<div class="alert alert-info">
+	<strong>Please note:</strong> The deadline for position papers to be submitted is {{startDate}}. You may view all other countries position papers on  and after this date.
+</div>
+{{/papersOpen}}
+
+{{^Position}}
+	<p>
+		Your country's ambassador has not yet submitted a position paper.<br />
+		{{#papersOpen}}<a href="/resolution/allpositions" class="button">View All Countries' Position Papers</a>{{/papersOpen}}
+	</p>
+{{/Position}}
+
+
+
+<form method="post">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-small">
+				<label for="pos">Position Paper</label>
+				{{#Delegate}}<textarea name="pos" class="large" required="required">{{Position}}</textarea>{{/Delegate}}
+				{{^Delegate}}<p>{{Position}}</p>{{/Delegate}}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<a href="/resolution/main" class="button button-cancel">Cancel</a>
+		</div>
+		<div class="col-md-6 text-right">
+			{{#Delegate}}<input type="submit" class="button" value="Save Changes" />{{/Delegate}}
+		</div>
+	</div>
+</form>
+
+{{<footer}}

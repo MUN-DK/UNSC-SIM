@@ -1,0 +1,50 @@
+{{>header}}
+<h3>Main Room</h3>
+
+{{#showRes}}
+	{{#editvalid}}
+	<div class="alert alert-info">
+		<strong>Please note:</strong> Your country has until {{startDate}} to submit your position paper. After that date you may view all other position papers.
+	</div>
+	{{/editvalid}}
+	
+	{{^editvalid}}
+	<div class="alert alert-info">
+		<strong>Please note:</strong> Countries have until {{startDate}} to submit their position paper. After that date you may view all of the position papers.
+	</div>
+	{{/editvalid}}
+	
+	<div class="row">
+		<div class="col-md-12">
+			{{#editvalid}}<a href="/resolution/position" class="button button-addedit">Add/Edit Your Country's Position Paper</a><br /><br />{{/editvalid}}
+			{{#papersOpen}}<a href="/resolution/allpositions" class="button">View All Position Papers by Country</a><br /><br />{{/papersOpen}}
+		</div>
+	</div>
+{{/showRes}}
+<h3>Resolutions</h3>
+{{^Resolutions}}
+<div class="alert alert-danger">
+	No Resolutions have been set yet.
+</div>
+{{/Resolutions}}
+
+{{#Resolutions}}
+<div class="res res-{{active}}">
+<form method="post" action="/resolution/main?rid={{resoId}};active={{active}}">
+	<div class="res-title">{{#enterRoom}}<a href="/resolution/debate?rid={{resoId}}">{{resName}}</a>{{/enterRoom}}{{^enterRoom}}{{resName}}{{/enterRoom}}<span class="status status-{{active}}">{{active}}</span>
+	{{#isModOrChair}}
+		<input type="submit" style="font-size:14px" class="button" id="btn{{resoId}}" value="Enable/Disable"/>
+	{{/isModOrChair}}
+	</div>
+</form>
+	<div class="res-desc">
+		<p>{{scenario}}</p>
+		<ol>
+			{{#clauseList}}
+			<li> {{clauseDescription}}</li>
+			{{/clauseList}}	
+		</ol>
+	</div>
+</div>
+{{/Resolutions}}
+{{>footer}}

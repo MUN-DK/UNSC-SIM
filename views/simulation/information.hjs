@@ -1,0 +1,79 @@
+{{>header}}
+
+<h3>Simulation Information</h3>
+
+{{#Simulation}}
+<div class="member">
+	<h4>Information</h4>
+	<ul class="member-list">
+		<li>Simulation Name: {{simName}}</li>
+		<li>Created By: {{creator}}</li>
+		</br>
+		<li>Registration Date: {{regDate}}</li>
+		<li>Start Date: {{startDate}}</li>
+		<li>End Date: {{endDate}}</li>
+	</ul>
+</div>
+{{/Simulation}}
+
+<div class="col-md-12">
+	<div class="col-md-4">
+		<input type='button' class='button' id='showRes' value='View Resolutions'/>
+	</div>
+	<div class="col-md-4">
+		<input type='button' class='button' id='showStats' value='View Stats'/>
+	</div>
+	<div class="col-md=4">
+		<a href="countryinformation" class="button button-edit" id="countryLink">View Country Information</a>
+	</div>
+</div>
+<div id="statList">
+	<div class="member">
+		<h4>Simulation Stats</h4>
+		<ul class="member-list">
+			<li>Total # of Users: {{userCount}}</li>
+			<li>Total # of Votes: {{voteCount}}</li>
+			{{#amendmentCount}}
+			<b>Resolution {{resID}}</b> <br/>
+				<li>Total # of amendments submitted: {{stat}}</li>
+			{{/amendmentCount}}
+		</ul>
+	</div>
+</div>	
+<div id="resList">
+	{{#Resolutions}}
+	<div class="res res-{{active}}">
+	<form method="post" action="/resolution/main?rid={{resoId}};active={{active}}">
+		<div class="res-title">{{#enterRoom}}<a href="/resolution/debate?rid={{resoId}}">{{resName}}</a>{{/enterRoom}}{{^enterRoom}}{{resName}}{{/enterRoom}}<span class="status status-{{active}}">{{active}}</span>
+		{{#isModOrChair}}
+			<input type="submit" style="font-size:14px" class="button" id="btn{{resoId}}" value="Enable/Disable"/>
+		{{/isModOrChair}}
+		</div>
+	</form>
+		<div class="res-desc">
+			<p>{{scenario}}</p>
+			<ol>
+				{{#clauseList}}
+				<li> {{clauseDescription}}</li>
+				{{/clauseList}}	
+			</ol>
+		</div>
+	</div>
+	{{/Resolutions}}
+</div>
+
+<script>
+	$(document).ready(function(){
+		 $("#resList").hide();
+		 $("#statList").hide();
+		 
+		$("#showRes").click(function() {
+		    $("#resList").toggle();
+		});
+		
+		$("#showStats").click(function() {
+		    $("#statList").toggle();
+		});
+	});
+</script>
+{{>footer}}

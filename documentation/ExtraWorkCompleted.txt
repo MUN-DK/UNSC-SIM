@@ -1,0 +1,47 @@
+-------------------------------
+FEATURES OF NOTE
+-------------------------------
+As of now we have three types of discussion style communication:
+	Global Messages- General discussion for all users in the simulation
+	Country Messages- General discussion for members of that country only
+	Debate messages- Ambassadors of countries debate and vote on the relolution
+
+We have implemented an activity log which can be easily viewed for the chair and moderator which logs the following:
+	Simulation was created
+	user has joined the simulation
+	Chairperson was declared/changed
+	Ambassador of a country was declared/changed
+	Resolution was created
+	Resolution was made active
+	Country directive was added/modified
+	Country has submited a position paper
+	Country Ambassador has submited an amendment
+	Chair has started a vote on an amendment
+	Country has voted on the clause
+	Voting result of the clause
+	
+
+We now have three ways to sort users into countries:
+	(NEW) Manual sort - chair selects which country the user goes to.
+	Instant auto sort - Sorts the users to countries automaticaly after the save button is pressed
+	Auto sort on deadline date- Sorts the users to countries automatically after the registration deadline date has past.
+
+- Chair can choose which amendment gets voted on first
+- For voting, ambassadors can choose "refuse"(Not present) and this will change change the voting result
+	(ie, one country chooses to refuse to vote then the outcome is out of 14 instead of 15.)
+- Countries can submit an amendment for not only Edit but also Remove and Add
+
+--------------------------------------------------------------------
+FUNCTIONALITY OF NOTE
+--------------------------------------------------------------------
+
+1. Each save/submit button send an user freindly message to the user to comfirm that it was successful.
+2. Error messages that are sent to users are easy to read and understand.
+3. Back buttons to form pages to make it easier to get back to the previous page.
+4. Members are easy to identify which country they are from in comunication rooms by their country flag by their user name.
+5. Auto pulling of debate messages via ajax.
+6. Created a stable database singleton.
+
+
+
+	

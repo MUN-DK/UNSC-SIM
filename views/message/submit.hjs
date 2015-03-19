@@ -1,0 +1,9 @@
+{{>header}}
+<h3>Submit to chair</h3>
+<form>
+<input type="text" name="subject" id="subject" placeholder="Subject" required="required" /><br />					
+<textarea name='message' value='message' cols='70' rows='10'>
+Message to council chair from countries delagate will go here!
+</textarea></br>
+<input type="submit" value="Submit" />
+{{>footer}}

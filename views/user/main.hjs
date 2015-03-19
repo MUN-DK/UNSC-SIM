@@ -1,0 +1,71 @@
+{{>firstheader}}
+<h3>Select Simulation Room:</h3>
+
+<div class="row choose-path">
+	<div class="{{#user.mod}}col-md-4{{/user.mod}}{{^user.mod}}col-md-6{{/user.mod}} text-center">
+		<a href="#existingSims" data-toggle="modal"><i class="fa fa-sign-in"></i><br />Select Existing Room</a>
+	</div>
+	<div class="{{#user.mod}}col-md-4{{/user.mod}}{{^user.mod}}col-md-6{{/user.mod}} text-center">
+		<a href="#availableSims" data-toggle="modal"><i class="fa fa-search"></i><br /> Join New Room</a>
+	</div>
+	{{#user.mod}}
+	<div class="col-md-4">
+		<a href="/simulation/add"><i class="fa fa-plus"></i><br /> Create New Room</a>
+	</div>
+	{{/user.mod}}
+</div>
+
+<div class="modal fade" id="existingSims" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Select Existing Room</h4>
+      </div>
+      <div class="modal-body">
+     	<ul>
+        {{#sims}}
+			<li><a href="/user/changesim?id={{id}}">{{name}}</a></li>		
+		{{/sims}}
+		{{^sims}}
+			<p>You have not joined any rooms.</p>
+		{{/sims}}
+		</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="availableSims" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Join New Room</h4>
+      </div>
+      <div class="modal-body">
+      	<form method="POST" action="/simulation/join"></form>
+     	<ul class="available-sims">
+        {{#joinSims}}
+			<li><a href="#" simID="{{simID}}">{{simName}}</a></li>		
+		{{/joinSims}}
+		</ul>
+		{{^joinSims}}
+			<p>There are no rooms available for you to join.
+		{{/joinSims}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('.available-sims a').click(function(e) {
+			e.preventDefault();
+			$('form').attr('action', ($('form').attr('action') + '?simID=' + $(this).attr('simID')));
+			$('form').submit();
+		});
+	});
+</script>
+
+{{>footer}}

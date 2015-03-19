@@ -1,0 +1,57 @@
+{{>header}}
+
+<script src="../js/jquery.slimscroll.min.js"></script>
+
+<h3>Old Messages</h3>
+<div class="msgs msgs-global" id="messages">
+	<div class="msgs-older">
+		<i class="fa fa-chevron-up"></i> View Older Messages
+	</div>
+    {{#messages}}
+		<div class="msgs-group clearfix">
+		<div class="msgs-user">
+			{{firstname}} {{lastname}} {{#country}}<img src="../img/flag-icons/{{country}}.png" />{{/country}}<br />
+			<span class="date">{{date}}</span>
+		</div>
+		<div class="msgs-message">
+			{{message}}
+		</div>
+	</div>
+	{{/messages}}
+
+</div>
+
+<div class="row">
+    <form method="post">
+	<div class="col-md-10">
+		<div class="form-small">
+			<input type="text" name="newMessage" id="newMessage" placeholder="New message..." class="message" required="required" />
+		</div>
+	</div>
+	<div class="col-md-2 text-right">
+		<input type="submit" class="button" value="Send" />
+	</div>
+	</form>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$('#messages').slimScroll({
+    		height: 'auto',
+    		start: 'bottom'
+      	});
+
+      	$('#messages').scroll(function(){
+      		if($(this).scrollTop() == 0 && $('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeOut();
+      		}
+
+      		if($(this).scrollTop() > 0 && !$('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeIn();
+      		}
+      	});
+	});
+</script>
+
+
+{{>footer}}

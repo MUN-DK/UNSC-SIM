@@ -1,0 +1,13 @@
+{{>header}}
+<h3>General Dissussion</h3>
+Possiblely also have links to more specific topics of dissussion
+(Ie. a certain clause without doing anychanges to it)
+
+<ul>
+	<li><a href="/resolution">Resolution</a></li>
+	<li><a href="/dashboard">Country's Page</a></li>
+	<li><a href="/message">Submit to Chair</a></li>
+	<li><a href="/session">Back to Session Main</a></li>
+	<li><a href="/newsfeeds"> Newsfeeds</a></li>
+</ul>
+{{>footer}}

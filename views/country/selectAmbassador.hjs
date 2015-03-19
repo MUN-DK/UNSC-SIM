@@ -1,0 +1,33 @@
+{{>header}}
+<h3>Select Ambassador</h3>
+{{#success}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> {{amb}} is the New Ambassador Now.
+</div>
+{{/success}}
+{{#noAmb}}
+<div class="alert alert-danger">
+	No Ambassador is elected, vote again.
+</div>
+{{/noAmb}}
+<div>
+    <form method="POST">
+        <table width="40%">
+            <tr>
+                <th>Members</th>
+                <th>Votes</th>
+            </tr>
+            {{#usernames}}
+            <tr>
+                <td><input type="radio" name="username" id="username" value="{{username}}" />
+                    <label for="{{username}}">{{username}}</label></td>
+                <td>{{votes}}</td>
+            </tr>
+            {{/usernames}}
+        </table>
+        {{#voted}}
+       		<input type="submit" class="button" value="Vote" />
+        {{/voted}}
+    </form>
+</div>
+{{<footer}}

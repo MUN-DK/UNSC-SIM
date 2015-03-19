@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{title}}</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+	<script src="../js/jquery.min.js"></script>
+	
+	<nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="../img/logo.png" />
+					<h2>Created by Group 2</h2>
+				</div>
+				<div class="col-md-5 col-md-offset-3 text-right">
+					<p>
+						Welcome, <strong>{{user.firstname}}</strong> | <a href="/user/profile"><i class="fa fa-user"></i> My Profile</a>
+						<span class="logout"><a href="/user/logout">Logout <i class="fa fa-sign-out"></i></a></span>
+					</p>
+
+					<!--{{^user.mod}}
+					<div class="change-sim">
+						<a href="" id="changeroom">Change simulation room...</a>
+						<ul class="drop-down">
+						{{#sims}}
+							<li><a href="/user/changesim?id={{id}}">{{name}}</a></li>		
+						{{/sims}}
+						<li><i class="fa fa-plus"></i> <a href="/simulation/join">Join New Room</a></li>
+						</ul>
+					</div>
+					{{/user.mod}}-->
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="tagline">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Peace starts here.</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 main main-first">

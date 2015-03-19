@@ -1,0 +1,56 @@
+{{>header}}
+<h3>Set Directives</h3>
+{{#success}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> Directives have been saved.
+</div>
+{{/success}}
+
+<form method="POST">
+<div class="form-small">
+	<label for="country">Select Country:</label>
+	<select name="country" id="country">
+    {{#countries}}
+        <option>{{country}}</option>
+    {{/countries}}
+    </select><br/>
+    <label for="directive">Directives to Selected Country:</label></br>
+    <textarea name="directive" id="directive" cols="80" rows="15"  required="required"></textarea></br>
+</div>
+<p class="text-right">
+	<input type="submit" class="button" value="Save" />
+</p>
+</form>
+
+<script>
+	$(document).ready(function(){
+		var directives = [];
+		{{#directives}}
+			directives.push({country : "{{country}}", directive : "{{Direc}}"});
+		{{/directives}}
+
+		changeDirectiveText();
+
+		$('#country').change(function() {
+			changeDirectiveText();
+		});
+
+		function changeDirectiveText() {
+			var selected = $('#country').find(":selected").text();
+			var found = false;
+			for(var k in directives) {
+				if (directives[k].country == selected) {
+					$('#directive').html(directives[k].directive);
+					found = true;
+				}
+			}
+
+			if(!found) {
+				$('#directive').html("");
+			}
+		}
+
+	});
+</script>
+
+{{<footer}}

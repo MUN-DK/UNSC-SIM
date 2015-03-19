@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{title}}</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+	<script src="../js/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.available-sims a').click(function(e) {
+				e.preventDefault();
+				$('#joinRoom').attr('action', ($('form').attr('action') + '?simID=' + $(this).attr('simID')));
+				$('#joinRoom').submit();
+			});
+		});
+	</script>
+	
+	<nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="../img/logo.png" />
+					<h2>Created by Group 2</h2>
+				</div>
+				<div class="col-md-5 col-md-offset-3 text-right">
+					<p>
+						Welcome, <strong>{{user.firstname}}</strong> | <a href="/user/profile"><i class="fa fa-user"></i> My Profile</a>
+						<span class="logout"><a href="/user/logout">Logout <i class="fa fa-sign-out"></i></a></span>
+					</p>
+
+					<div class="change-sim text-left">
+						<a href="" id="changeroom">Change simulation room...</a>
+						<ul class="drop-down">
+						{{#sims}}
+							<li><a href="/user/changesim?id={{id}}">{{name}}</a></li>		
+						{{/sims}}
+						{{^user.mod}}
+						<li><i class="fa fa-plus"></i> <a data-toggle="modal" href="#availableSims">Join New Room</a></li>
+						{{/user.mod}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="modal fade" id="availableSims" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Join New Room</h4>
+				</div>
+				<div class="modal-body">
+			  		<form method="POST" action="/simulation/join" id="joinRoom"></form>
+			 		<ul class="available-sims">
+			    	{{#joinSims}}
+						<li><a href="#" simID="{{simID}}">{{simName}}</a></li>		
+					{{/joinSims}}
+					</ul>
+					{{^joinSims}}
+						<p>There are no rooms available for you to join.
+					{{/joinSims}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tagline">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>You're in room: <strong>{{currentSimName}}</strong></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 left-menu">
+					{{#currentSim}}
+					<a href="/resolution/main" class="resolutions">Main Room</a>
+					<h2>Simulation Menu</h2>
+					<ul class="sim-menu">
+						<li><i class="fa fa-dashboard"></i><a href="/country/overview">Dashboard</a></li>
+						<li><i class="fa fa-users"></i><a href="/membership/list">User List</a></li>
+						<li><i class="fa fa-comments"></i><a href="/message/global">Global Messages</a></li>
+					</ul>
+
+					{{#user.mod}}
+					<h2>Administration Menu</h2>
+					<ul class="sim-menu">
+						<li><i class="fa fa-plus"></i><a href="/simulation/add">Create New Room</a></li>
+						<li><i class="fa fa-pencil"></i><a href="/simulation/edit?id={{currentSim}}">Edit Room</a></li>
+						<li><i class="fa fa-gavel"></i><a href="/resolution/add">Add Resolution</a></li>
+						<li><i class="fa fa-list-alt"></i><a href="/newsfeed/view">Manage Newsfeeds</a></li>
+						<li><i class="fa fa-list"></i><a href="/simulation/activity">Simulation Activity</a></li>
+						<li><i class="fa fa-info-circle"></i><a href="/simulation/information">Simulation Information</a></li>
+					</ul>
+					{{/user.mod}}
+					<br />
+					<div class="help">
+						<div class="panel panel-info">
+							<div class="panel-heading"><b>Where to now?</b></div>
+							<div class="panel-body"><p>Check out the <a href="/resolution/main">Main Room</a> for all debates and discussions on resolutions and relevant ammendments.</p></div>
+						</div>
+					</div>	
+					{{/currentSim}}
+					{{^currentSim}}
+					<div class="help">
+						<div class="panel panel-info">
+							<div class="panel-heading"><b>Where to now?</b></div>
+							<div class="panel-body">
+								<p>
+									{{^user.mod}}
+									Please select, join or create a simulation room to get started.
+									{{/user.mod}}
+									{{#user.mod}}
+									Please select or join a simulation room to get started.
+									{{/user.mod}}
+								</p>
+							</div>
+						</div>
+					</div>	
+					{{/currentSim}}
+				</div>
+				<div class="col-md-9 main">

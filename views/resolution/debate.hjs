@@ -1,0 +1,408 @@
+{{>header}}
+
+<script src="../js/jquery.slimscroll.min.js"></script>
+
+<div id="test"></div>
+
+<h3>{{resName}} Information</h3>
+
+<div class="res res-active">
+	<div class="res-title">{{resName}}<span class="status status-{{active}}">{{active}}</span>
+	</div>
+	<div class="res-desc">
+		<p>{{scenario}}</p>
+		<ol>
+			{{#clauseList}}
+			<li> {{clauseDescription}}</li>
+			{{/clauseList}}	
+		</ol>
+	</div>
+</div>
+
+	<div class="notclosed"> <!-- closing status == false -->
+		{{#Ambassador}}
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<a href="/resolution/submit?rid={{resID}}" class="button">Submit Amendment</a>
+			</div>
+			<div class="col-md-6">
+				<a href="/newsfeed/view" class="button">View Newsfeeds</a>
+			</div>
+		</div>	
+		{{/Ambassador}}
+		{{#Chair}}
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<a href="/resolution/viewamendments?rid={{resID}}" class="button">Amendment Requests</a>
+			</div>
+				<div class="col-md-4">
+					<form method="post" action="/resolution/closeresolution?rid={{resID}}">
+						<input type="submit" class="button button-cancel" value="Close Resolution" />
+					</form>
+				</div>
+				<div class="col-md-4">
+					<a href="/newsfeed/view" class="button">View Newsfeeds</a>
+				</div>
+		</div>
+		{{/Chair}}
+		{{#Mod}}
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<a href="/resolution/viewamendments?rid={{resID}}" class="button">Amendment Requests</a>
+			</div>
+				<div class="col-md-6">
+					<form method="post" action="/resolution/closeresolution?rid={{resID}}">
+						<input type="submit" class="button button-cancel" value="Close Resolution" />
+					</form>
+				</div>
+		</div>
+		{{/Mod}}
+	</div>
+
+<br/><br/><br/>
+
+<h3>{{resName}} Debate</h3>
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="msgs msgs-global" id="messages">
+			<div class="msgs-older">
+				<i class="fa fa-chevron-up"></i> <a href="">View Older Messages</a>
+			</div>
+			<div id="loadMessages">
+			{{#messages}}
+			<div class="msgs-group clearfix">
+				<div class="{{messageType}}">
+					<div class="msgs-user">
+						<span class="name">{{firstname}} {{lastname}} {{#country}}<img src="../img/flag-icons/{{country}}.png" />{{/country}}</span><br />
+						<span class="date">{{date}}</span>
+					</div>
+					<div class="msgs-message">
+						{{message}}
+					</div>
+				</div>
+			</div>
+			{{/messages}}
+			</div>
+
+		</div>
+
+		{{#Debater}}
+			<div class="status notclosed"> <!-- cloingStatus == false -->
+				{{^Ambassador}}
+				<div class="row">
+				    <form method="post">
+					<div class="col-md-10">
+						<div class="form-small">
+							<input type="text" name="newMessage" id="newMessage" placeholder="New message..." class="message" required="required" />
+						</div>
+					</div>
+					<div class="col-md-2 text-right">
+						<input type="submit" class="button" value="Send" />
+					</div>
+					</form>
+				</div>
+				{{#Chair}}
+						<div class="status notdebating"> <!-- debating == true -->
+							<div class="nowaitvote">
+								<div class="row">
+								    <form method="post" action="/resolution/results">
+										<div class="col-md-12">
+											<input type="submit" class="button" value="Calculate Results" />
+										</div>
+									</form>
+								</div>	
+							</div>
+							<div class="status waitvote"> <!-- waitvote == true -->
+								</br>
+								<div class="col-md-12">
+									<div class="col-md-6">
+										<div class="alert alert-success">
+											Waiting for countries to vote.
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+						<div class="status debating"> <!-- debating == false -->
+							<div class="row">
+							    <form method="post" action="/resolution/closedebate?rid={{resID}}">
+									<div class="col-md-12">
+										<input type="submit" class="button" value="Close Debate" />
+									</div>
+								</form>
+							</div>
+						</div>
+				{{/Chair}}
+				
+				{{/Ambassador}}
+				
+				{{#Ambassador}}
+					<div class="status votenotopen"> <!-- voteopen == false -->
+						<div class="row">
+						    <form method="post" action="/resolution/debate?rid={{resID}}">
+							<div class="col-md-10">
+								<div class="form-small">
+									<input type="text" name="newMessage" id="newMessage" placeholder="New message..." class="message" required="required" />
+								</div>
+							</div>
+							<div class="col-md-2 text-right">
+								<input type="submit" class="button" value="Send" />
+							</div>
+							</form>
+						</div>
+					</div>
+					<div class="status voteopen"> <!-- voteopen == true -->
+					</br>
+						<div class="status notvoted"> <!-- voted == false -->
+							<div class="row">
+							    <form method="POST" action="/resolution/vote"> 
+									<div class="col-md-12">
+										<div class="form-small">
+										<select name="voteBox" id="voteBox">
+											<option>Yes</option>
+											<option>No</option>
+											<option>Abstain</option>
+											<option class="final">Veto</option><!-- final == true -->
+										</select>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<input type="submit" class="button" value="Submit" />
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="status voted"> <!-- voted == true -->
+							<div class="col-md-12">
+								<div class="alert alert-success">
+									You have voted. Awaiting vote results.
+								</div>
+							</div>	
+						</div>
+					</div>
+				{{/Ambassador}}
+			</div>
+		{{/Debater}}
+	<div class="status closed"> <!-- closing status == true -->
+		</br>
+		<div class="col-md-12">
+			<div class="alert alert-success">
+				Resolution has been closed!
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="col-md-3 userlist">
+		<div class="msgs-list" id="userlist">
+			<h3>User List</h3>
+			<div class="msgs-userspace">
+					<ul>
+						<li><img src="../img/site-icons/Mod.png" /> {{#isModLoggedIn}}{{modName}}{{/isModLoggedIn}}{{^isModLoggedIn}}<a href='/message/personal?{{modName}}'>{{modName}}</a>{{/isModLoggedIn}}</li>
+						{{#chair}}
+						<li><img src="../img/site-icons/Chair.png" /> {{#isChairLoggedIn}}{{chair}}{{/isChairLoggedIn}}{{^isChairLoggedIn}}<a href='/message/personal?{{chair}}'>{{chair}}</a>{{/isChairLoggedIn}}</li>
+						{{/chair}}
+						{{#ambassadors}}
+						<li><img src="../img/flag-icons/{{country}}.png" /> {{#isLoggedIn}}{{username}}{{/isLoggedIn}}{{^isLoggedIn}}<a href='/message/personal?{{username}}'>{{username}}</a>{{/isLoggedIn}}</li>
+						{{/ambassadors}}
+					</ul>
+					{{^ambassadors}}
+					<div class="alert alert-danger">
+						Ambassadors have not yet been assigned.
+					</div>
+					{{/ambassadors}}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	$(document).ready(function(){	
+		//initialize tinyscroll
+		$('#userlist').slimScroll({
+    		height: '350px'
+      	});
+
+		//hide all status by default
+      	$('.status').hide();
+
+		var atBottom = true;
+
+		$('#messages').slimScroll({
+    		height: '350px',
+    		start: 'bottom'
+      	}).bind('slimscrolling', function(e, pos) {
+      		if(($('#loadMessages').outerHeight() - pos) != 330) {
+      			atBottom = false;
+      		} else {
+      			atBottom = true;
+      		}
+      		console.log(atBottom);
+		});
+      	
+
+		//hide view older if no older messages
+      	if($('#messages').scrollTop() == 0) {
+      		$('.msgs-older').hide();
+      	}
+
+		$('.msgs-older a').click(function(e){
+			e.preventDefault();
+			$('#messages').slimScroll({ scrollTo: '0px' });
+		});
+
+      	//hide view older if at top of messages
+      	$('#messages').scroll(function(){
+      		if($(this).scrollTop() == 0 && $('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeOut();
+      		}
+
+      		if($(this).scrollTop() > 0 && !$('.msgs-older').is(':visible')) {
+      			$('.msgs-older').fadeIn();
+      		}
+      	});
+
+      	var checkMessages;
+      	var checkStatus;
+
+      	var oldMessages = null;
+
+		function getMessages() {
+			$.ajax({
+				type: "GET",
+				url: "/resolution/getMessages?rid={{resID}}",
+				dataType: "json"
+			}).done (function (data) {
+				checkNewMessages(data);
+				oldMessages = data;
+			});
+		}
+
+		getMessages();
+		checkMessages = setInterval(getMessages, 2000);
+
+		function getStatus() {
+			$.ajax({
+				type: "GET",
+				url: "/resolution/debatestatus?rid={{resID}}",
+				dataType: "json"
+			}).done (function (data) {
+				checkStatusUpdate(data);
+			});
+		}
+
+		getStatus();
+		checkStatus = setInterval(getStatus, 2000);
+
+		function checkStatusUpdate(newStatus) {
+			var votingToClose = newStatus.status[0].votingToClose;
+			var debating = newStatus.status[0].debating;
+			var waitVote = newStatus.status[0].waitVote;
+			var voteOpen = newStatus.status[0].voteOpen;
+			var Final = newStatus.status[0].Final;
+			var voted = newStatus.status[0].voted;
+
+			//alert(votingToClose + ' ' + debating + ' ' + waitVote + ' ' + voteOpen + ' ' + Final);
+			if(votingToClose) {
+				$('.closed').show();
+				$('.notclosed').hide();
+			} else {
+				$('.closed').hide();
+				$('.notclosed').show();
+			}
+
+			if(debating) {
+				$('.debating').show();
+				$('.notdebating').hide();
+			} else {
+				$('.debating').hide();
+				$('.notdebating').show();
+			}
+
+			if(waitVote) {
+				$('.waitvote').show();
+				$('.nowaitvote').hide();
+			} else {
+				$('.waitvote').hide();
+				$('.nowaitvote').show();
+			}
+
+			if(voteOpen) {
+				$('.voteopen').show();
+				$('.votenotopen').hide();
+			} else {
+				$('.voteopen').hide();
+				$('.votenotopen').show();
+			}
+
+			if(Final) {
+				$('.final').show();
+			} else {
+				$('.final').hide();
+			}
+
+			if(voted) {
+				$('.voted').show();
+				$('.notvoted').hide();
+			} else {
+				$('.voted').hide();
+				$('.notvoted').show();
+			}
+
+			if(voteOpen && debating) {
+				$('.voteopen').hide();
+				$('.votenotopen').show();
+				$('.debating').show();
+			}
+
+			if(!votingToClose && !debating && !waitVote && !voteOpen && !voted) {
+				$('.nowaitvote').hide();
+			}
+
+
+		}
+
+		function checkNewMessages(newMessages) {
+			var appended = false;
+
+			if(oldMessages != null) {
+
+				var curScroll = $('#messages').scrollTop();
+
+				for(var i = oldMessages.newMessages.length; i < newMessages.newMessages.length; i++) {
+					var appendString = '<div class="msgs-group clearfix">';
+					appendString += '<div class="' + newMessages.newMessages[i].messageType + '">';
+					appendString +=	'<div class="msgs-user">';
+					appendString += newMessages.newMessages[i].firstname + " " + newMessages.newMessages[i].lastname + " ";
+
+					if(newMessages.newMessages[i].country) {
+						appendString += '<img src="../img/flag-icons/' + newMessages.newMessages[i].country + '.png" />';
+					}
+
+					appendString +=	'<br /><span class="date">' + newMessages.newMessages[i].date + '</span>';
+					appendString +=	'</div>';
+					appendString +=	'<div class="msgs-message">';
+					appendString +=	newMessages.newMessages[i].message;
+					appendString +=	'</div>';
+					appendString +=	'</div>';
+					appendString +=	'</div>';
+
+					$('#loadMessages').append(appendString);
+					appended = true;
+				}
+
+				if(appended && atBottom) {
+					var scrollTo_val = $('#messages').prop('scrollHeight') + 'px';
+					$('#messages').slimScroll({scrollTo : scrollTo_val});
+				}
+			}
+		}
+
+	});
+
+</script>
+
+{{>footer}}

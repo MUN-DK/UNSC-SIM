@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{{title}}</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/login.css" rel="stylesheet" type="text/css" />
+		<script src="../js/jquery.min.js"></script>
+
+	</head>
+	<body>
+	
+	<!--START TOP NAVIGATION -->
+	<nav>
+		<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<img src="../img/logo.png" />
+						<h2>Created by Group 2</h2>
+					</div>
+					<div class="login col-sm-4 col-sm-offset-2">					
+						<p><strong>Already a member?</strong> Please sign in:</p>
+						<form method="POST" action="/user/login" id="submitForm">
+							<input type="text" placeholder="Username" name="username" id="userNameField" required="required" />
+							<input type="password" placeholder="Password" name="password" id="passwordField" required="required" />
+							{{#error}}
+								<div class="alert alert-danger">
+									You've entered an invalid username and/or password. <b>Please try again.</b>
+								</div>
+							{{/error}}
+							<div class="row form-bottom">
+								<div class="col-md-6">
+									<p>
+										New here?<br />
+										<a href="/user/register">Please sign up.</a>
+									</p>
+									<h4>
+										<a href="/user/readme">How-to Guide</a>
+									</h4>
+								</div>
+								<div class="col-md-6 text-right">
+									<input type="submit" value="Sign in" id="submitBtn" /></p>
+									
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>		
+		</nav>
+		<!--END TOP NAVIGATION-->

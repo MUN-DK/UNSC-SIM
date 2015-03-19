@@ -1,0 +1,120 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,700italic);
+
+/**** MAIN BODY ****/
+
+body {
+	background: url(../img/login_bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/**** TOP NAV ****/
+
+nav {
+	background: #f5f5f5;
+	padding: 20px 0;
+	border-bottom: 20px solid #ebebeb;
+	line-height: 10pt;
+}
+
+input {
+	background: #ebebeb;
+	border: 1px solid #dcdcdf;
+	border-radius: 2px;
+	box-shadow: inset 1px 1px 0 #eaeaea,
+				inset -1px -1px 0 rgba(255,255,255,0.5);
+	padding: 7px 2%;
+	width: 49%;
+	margin-bottom: 10px;
+}
+
+nav input[type="submit"] {
+	background: #e5ae24;
+	color: #f7f7fa;
+	box-shadow: 0 0 0 black, 0 0 0 black;
+	border: 0px;
+	border-radius: 4px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 400;
+	margin: 0 3px 0 0;
+}
+
+nav h2 {
+	color: rgba(0,0,0,0.5);
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 12pt;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0 white;
+	position: absolute;
+	width: 100%;
+	top: 80px;
+	margin-left: 190px;
+}
+
+/**** HERO UNIT ****/
+
+.hero {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 35pt;
+	font-weight: 700;
+	color: #f5f5f5;
+	padding: 120px;
+	line-height: 36pt;
+	text-align: center;
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.hero strong {
+	color: #f5c51e;
+}
+
+/**** MAIN CONTENT ****/
+
+.content {
+	background: #101931;
+	color: #c1c9dc;
+	text-shadow: 1px 1px 0 black;
+	padding: 50px 0;
+	border-top: 20px solid rgba(0,0,0,0.1);
+}
+
+.content h2 {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 25pt;
+	color: #f5f5f5;
+	font-weight: 700;
+	font-style: italic;
+	margin: 0 0 20px 0;
+}
+
+.content input {
+	background: #2a3550;
+	color: #f5f5f5;
+	border: 1px solid black;
+	box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+	width: 100%;
+}
+
+.content input[type="submit"] {
+	background: #e5ae24;
+	color: #101931;
+	box-shadow: 0 0 0 black, 0 0 0 black;
+	border: 0px;
+	border-radius: 4px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 400;
+	width: 100px;
+}
+
+footer {
+	background: #0c1428;
+	color: #f5f5f5;
+	text-shadow: -1px -1px 0 black;
+	border-top: 1px solid rgba(0,0,0,0.8);
+	padding: 40px 0;
+	box-shadow: inset 0 20px 0 rgba(0,0,0,0.1);
+	color: #627c94;
+}

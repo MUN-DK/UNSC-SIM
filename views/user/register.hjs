@@ -1,0 +1,53 @@
+{{>logheader}}
+		<!--{{#error1}}
+			<script language="javascript" type="text/javascript">
+				alert('Display name is already in use, please use another');
+			</script>
+		{{/error1}}
+		
+		{{#error2}}
+			<script language="javascript" type="text/javascript">
+				alert('Passwords do not match');
+			</script>
+		{{/error2}}-->
+		
+		<!-- START MAIN CONTENT -->
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Register your account</h2>
+						<form method="POST">
+							<div class="row">
+								<div class="col-md-6">
+									<input type="text" name="display_name" id="displayname" placeholder="Username" required="required" /><br />
+									<input type="text" name="first_name" id="first_name" placeholder="First Name" required="required" /><br />
+									<input type="text" name="last_name" id="last_name" placeholder="Last Name" required="required" /><br />
+									{{#error1}}
+										<div class="alert alert-danger">
+											The display name you've selected is already in use. Please choose another.
+										</div>
+									{{/error1}}
+									<input type="email" name="email" id="email" placeholder="Email Address" required="required" /><br />
+									<input type="password" name="password" id="password" placeholder="Password" required="required" /><br />
+									<input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required="required" />
+									{{#error2}}
+										<div class="alert alert-danger">
+											The passwords you have entered do not match. Please try again.
+										</div>
+									{{/error2}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 col-md-offset-3 text-right">
+									<input type="submit" value="Register" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MAIN CONTENT -->
+
+		{{>logfooter}}

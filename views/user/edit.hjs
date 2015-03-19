@@ -1,0 +1,52 @@
+{{>header}}
+
+<h3>Edit My Profile</h3>
+
+{{#error1}}
+<div class="alert alert-danger">
+    <strong>Uh oh!</strong> The passwords you have entered do not match.
+</div>
+{{/error1}}
+
+{{#error2}}
+<div class="alert alert-danger">
+    <strong>Uh oh!</strong> Please confirm your password.
+</div>
+{{/error2}}
+
+<form method="POST" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-3">
+			<img src="{{image}}" alt="no picture" class="img-responsive profile-big" /><br />
+			<p>Upload Photo</p>
+			<input type="file" name="image" class="button"/>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-small">
+						<label for="first_name">First Name</label><br />
+						<input type="text" name="first_name" id="first_name" placeholder="First Name" value="{{fName}}" required="required" /><br />
+						<label for="last_name">Last Name</label><br />
+						<input type="text" name="last_name" id="last_name" placeholder="Last Name" value="{{lName}}" required="required" /><br />
+						<label for="email">Email</label><br />
+						<input type="email" name="email" id="email" placeholder="email" value="{{email}}" required="required"/>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-small">
+						<label for="new_pass">New Password</label><br />
+						<input type="password" name="new_pass" id="new_pass" placeholder="Password" /> <br />
+						<label for="confirm_pass">Confirm Password</label><br />
+						<input type="password" name="comfirm_pass" id="comfirm_pass" placeholder=" Comfirm Password" />
+					</div>
+				</div>
+			</div>
+			<div class="text-right">
+			<input type="submit" value="Save Changes" class="button" />
+			</div>
+		</div>
+	</div>
+</form>
+
+{{>footer}}

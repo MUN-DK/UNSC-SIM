@@ -1,0 +1,62 @@
+{{>header}}
+<script>
+	$(document).ready(function() {
+		$('.button').click(function(e) {
+			e.preventDefault();
+			var append = '?newsID=' + $(this).attr('id') +'&action='  + $(this).attr('value');
+			$('form').attr('action', append);
+			$('form').submit();
+		});
+	});
+</script>	
+{{^Mod}}
+	<h2>Switch Dashboard View:</h2>
+	<ul class="view-nav">
+		<li><a href="/country/overview">Country Overview</a></li>
+		<li><a href="/simulation/activity">Simulation Activity</a></li>
+		<li class="active">Newsfeed</li>
+	</ul>
+{{/Mod}}
+
+
+{{#Mod}}
+<h3>Newsfeed</h3>
+{{/Mod}}
+	<form method="POST" action="/newsfeed/view"> 
+	{{^newsfeeds}}
+		<div class="alert alert-danger">
+			No newsfeeds have been added.
+		</div>
+	{{/newsfeeds}}
+	{{#ChairOrMod}}
+		<div>
+			<a href="add?newsID=new" class="button button-edit" id="new" value="Add">Add New Article</a>
+			</br>
+			</br>
+		</div>
+	{{/ChairOrMod}}
+	{{#newsfeeds}}
+		<div>
+			<div>
+				{{#URL}}
+					<h4><a href="http://{{text}}">{{newsTitle}}</a></h4>
+				{{/URL}}
+				
+				{{^URL}}	
+				<h4>{{newsTitle}}</h4>
+				<ul>
+					{{text}}	
+				</ul>
+				{{/URL}}
+			</div>
+			{{#ChairOrMod}}
+				<div>
+					<input type="submit" class="button" id="{{newsID}}" name="button" value="Edit"></input>
+					<input type="submit" class="button" id="{{newsID}}" name="button" value="Remove"></input>
+				</div>
+			{{/ChairOrMod}}
+		</div>
+		</br>				
+	{{/newsfeeds}}  
+	</form>		
+{{>footer}}

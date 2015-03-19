@@ -1,0 +1,23 @@
+{{>header}}
+{{^User}}
+	<h2>Switch Dashboard View:</h2>
+		<ul class="view-nav">
+			<li><a href="/country/overview">Country Overview</a></li>
+			<li class="active">Simulation Activity</li>
+			<li><a href="/newsfeed/view">Newsfeed</a></li>
+	</ul>
+{{/User}}
+
+<h3>Simulation Activity</h3>
+{{#history}}
+<div class="activity">
+	<div class="activity-date">
+		{{date}}
+	</div>
+	<div class="activity-desc">
+		{{description}}
+	</div>
+</div>
+{{/history}}
+
+{{>footer}}

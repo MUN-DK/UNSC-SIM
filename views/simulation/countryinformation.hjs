@@ -1,0 +1,140 @@
+{{<header}}
+	<h3>Country Information</h3>
+	<input type="hidden" id="positions" value="{{allPositions}}">
+	<input type="hidden" id="directives" value="{{allDirectives}}">
+	<input type="hidden" id="stats" value="{{allStats}}">
+	
+	<div class="col-md-12">
+	<div class="form-small">
+	<select id="CountryList">
+	{{#countryList}}
+		<option value={{id}}>{{country}}</option>
+	{{/countryList}}
+	</select>
+	</div>
+	</div>
+	
+	
+		<div class="head"> 
+			<h4>China Communication Channel</h4>
+		</div>
+		
+		<div class="msgs msgs-country" id="messages">
+			<div class="msgs-group clearfix">
+				<div class="msgs-user">
+					<div class="message">
+						<span></span>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<input type='button' class='button' id='showPos' value='View Position'/>
+			</div>
+			<div class="col-md-4">
+				<input type='button' class='button' id='showDir' value='View Directive'/>
+			</div>
+			<div class="col-md-4">
+				<input type='button' class='button' id='showStat' value='View Stats'/>
+			</div>
+		</div>
+		</br></br></br>
+
+		<div class="position" id="position">
+			<h4>China's Position</h4>
+			<span></span>
+		</div>
+		
+		<div class="directive" id="directive">
+			<h4>China's Directive</h4>
+			<span></span>
+		</div>
+		
+		<div class="stat" id="stat">
+			<h4>China's Stats</h4>
+			<span></span>
+		</div>
+		
+		
+	
+	
+	<script>
+	$(document).ready(function(){
+	
+			$("#position").hide();
+			$("#directive").hide();
+			$("#stat").hide();
+
+		get(0, "China");
+		$('#CountryList').change(function(){
+			var selected = $(this).find(":selected").text();
+			var id = $(this).find(":selected").val();
+			$(".head h4").html(selected+" Communication Channel");
+			$(".position h4").html(selected+"'s Position Paper");
+			$(".directive h4").html(selected+"'s Directive");
+			$(".stat h4").html(selected+"'s Stats");
+			console.log(selected);
+			get(id, selected);
+		});
+			
+		function get(num, country){
+			var positions, directives, messages, stat;
+			position = [];
+			directives = [];
+			messages = [];
+			stat = [];
+			{{#allMessages}}
+				messages.push(['{{firstname}}','{{lastname}}','{{date}}','{{message}}','{{country}}']);
+			{{/allMessages}}
+			var messageString = '';
+			for(var i=0; i<messages.length; i++) {
+				if(messages[i][4] == country){
+				messageString = messageString + (messages[i][0]+ ' '+ messages[i][1]+ '<br/>'+ messages[i][2]+ '<br/>'+ messages[i][3]+'<br/><br/>');
+				}
+			}
+			
+			{{#allStats}}
+				stat.push(['{{resId}}','{{country}}','{{stat}}']);
+			{{/allStats}}
+			console.log("stats length: "+stat.length);
+			var statString = '';
+			for(var i=0; i<stat.length; i++) {
+				if(stat[i][1] ===  country){
+					statString = statString + ('<b>Resolution '+stat[i][0]+'</b><br/><li> Total # of amendment submited : ' + stat[i][2] +'</li>');
+				}
+			}
+					
+			
+			positions =  $("#positions").val().split(",");
+			directives = $("#directives").val().split(",");
+			$(".position span").html(positions[num]);
+			$(".directive span").html(directives[num]);
+			$(".message span").html(messageString);
+			$(".stat span").html(statString);
+		}
+		
+		function getDetails(country){
+		}	
+		
+					
+			$("#position").hide();
+			$("#directive").hide();
+			$("#stat").hide();
+			 
+			$("#showPos").click(function() {
+			    $("#position").toggle();
+			});
+			
+			$("#showDir").click(function() {
+			    $("#directive").toggle();
+			});
+			
+			$("#showStat").click(function() {
+			    $("#stat").toggle();
+			});
+	});
+</script>
+{{<footer}}

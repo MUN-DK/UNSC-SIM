@@ -1,0 +1,46 @@
+{{>header}}
+<h3>Create a New Simulation Room</h3>
+{{#createSuccess}}
+<div class="alert alert-success">
+	<strong>Sweet!</strong> You have successfully created a new room. <a href="/user/changesim?id={{simID}}">Go to room</a> or continue creating.
+</div>
+{{/createSuccess}}
+
+{{#error1}}
+<div class="alert alert-danger">
+	<strong>Uh oh!</strong> Your simulation end date must be after the start and registration deadline dates.
+</div>
+{{/error1}}
+{{#error2}}
+<div class="alert alert-danger">
+	<strong>Uh oh!</strong> Your simulation start date must be after the registration deadline.
+</div>
+{{/error2}}
+
+<form method="POST">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-small">
+				<label for="session_name">Simulation Room Name</label><br />
+				<input type="text" name="session_name" id="session_name" placeholder="Simulation Room Name" required="required" /><br />
+				<label for="reg_date">Registration Deadline</label><br />
+				<input type="date" name="reg_date" id="reg_date" placeholder="Registration Date" required="required"/> <br />			
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-small">
+				<label for="start_date">Simulation Start Date</label><br />
+				<input type="date" name="start_date" id="start_date" placeholder="Simulation Start Date" required="required" /><br />
+				<label for="end_date">Simulation End Date</label><br />
+				<input type="date" name="end_date" id="end_date" placeholder="Ending Date" required="required"/> <br />
+
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-right">
+			<input type="submit" value="Create" class="button" />
+		</div>
+	</div>
+</form>
+{{>footer}}

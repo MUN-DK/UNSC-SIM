@@ -1,0 +1,73 @@
+{{>header}}
+
+<h3>Submit Amendment</h3>
+	<form method="POST">
+	{{#success}}
+		<div class="alert alert-success">
+			<strong>Sweet!</strong> The change to amendment has been send to chair for approval.
+		</div>
+	{{/success}}
+	{{#error}}
+		<div class="alert alert-danger">
+			You cannot {{change}} a clause that has not yet been added to the resolution.
+		</div>
+	{{/error}}
+    	<div class="row">
+    		<div class="col-md-12"> 
+            	<div class="form-small">
+            		<p align="center">
+            			Please enter the clause number you wish the change or Removed.  If you want to add a new clause,
+            			enter the next clause number of the resolution.  When requesting a clause to be removed enter 
+            			why your country wants it removed.</p>
+					<select id="Clause_Num" name="Clause_Num">
+						{{#options}}
+							<option value={{num}}>{{num}}</option>
+						{{/options}}
+						<option value="New Clause">New Clause</option>
+					</select>	
+					<input type="hidden" id="clauseList" value="{{clause}}">
+	                <label for="clause">Clause</label>
+	                <textarea name="clause" id="clause" class="large" required="required"></textarea>
+	            </div>
+	    	</div>
+	    </div>
+	    <div class="row">
+    		<div class type="columns" align="center">
+				<input type="submit" class="button" id="editButton" name="button" value="Edit"></input>
+				<input type="submit" class="button" id="removeButton" name="button" value="Remove"></input>
+				<input type="submit" class="button" id="addButton" name="button" value="Add"></input>
+				<input type="submit" class="button button-cancel" id="submit" name="button" value="Back To Debate"></input>
+			</div>	
+		</div>
+	</form>
+
+<script>
+	$(document).ready(function(){
+		getClause(1);
+		console.log($("#clauseList").val());
+		$('#Clause_Num').change(function(){
+			var selected = $(this).find(":selected").text();
+			getClause(selected);
+		});
+
+		function getClause(num){
+			var value = num;
+			var list= [];
+			if(value !="New Clause") {
+				list = $("#clauseList").val().split(",");
+		    	$("#clause").html(list[value-1]); // display the value
+		    	$('#addButton').hide();
+		    	$('#editButton').show();
+		    	$('#removeButton').show();
+
+		    } else {
+				$("#clause").html("");
+				$('#addButton').show();
+		    	$('#editButton').hide();
+		    	$('#removeButton').hide();
+			}
+		}
+	});
+</script>
+
+{{>footer}}
